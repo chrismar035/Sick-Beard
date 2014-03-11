@@ -284,4 +284,10 @@ $(document).ready(function () {
             });
     });
 
+    $('#testPushSomething').click(function () {
+        $('#testPushSomething-result').html(loading);
+        var pushsomething_service_token = $("#pushsomething_service_token").val();
+        $.get(sbRoot + "/home/testPushSomething", {'token': pushsomething_service_token},
+            function (data) { $('#testPushSomething-result').html(data); });
+    });
 });

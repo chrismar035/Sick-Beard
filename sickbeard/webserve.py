@@ -2064,6 +2064,16 @@ class Home:
             return "Test Synology notice failed"
 
     @cherrypy.expose
+    def testPushSomething(self, token=None):
+        cherrypy.response.headers['Cache-Control'] = "max-age=0,no-cache,no-store"
+
+        result = notifiers.pushsomething_notifier.test_notify(token)
+        if result:
+            return "PushSomething notification succeeded. Check your PushSomething receivers."
+        else:
+            return "Error sending PushSomething notification"
+
+    @cherrypy.expose
     def shutdown(self, pid=None):
 
         if str(pid) != str(sickbeard.PID):
