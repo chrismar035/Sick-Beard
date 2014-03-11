@@ -1103,7 +1103,8 @@ class ConfigNotifications:
                           use_pytivo=None, pytivo_notify_onsnatch=None, pytivo_notify_ondownload=None, pytivo_update_library=None,
                               pytivo_host=None, pytivo_share_name=None, pytivo_tivo_name=None,
                           use_nma=None, nma_notify_onsnatch=None, nma_notify_ondownload=None, nma_api=None, nma_priority=0,
-                          use_pushalot=None, pushalot_notify_onsnatch=None, pushalot_notify_ondownload=None, pushalot_authorizationtoken=None):
+                          use_pushalot=None, pushalot_notify_onsnatch=None, pushalot_notify_ondownload=None, pushalot_authorizationtoken=None,
+                          use_pushsomething=None, pushsomething_notify_onsnatch=None, pushsomething_notify_ondownload=None, pushsomething_service_token=None):
 
         results = []
 
@@ -1189,6 +1190,11 @@ class ConfigNotifications:
         sickbeard.PUSHALOT_NOTIFY_ONSNATCH = config.checkbox_to_value(pushalot_notify_onsnatch)
         sickbeard.PUSHALOT_NOTIFY_ONDOWNLOAD = config.checkbox_to_value(pushalot_notify_ondownload)
         sickbeard.PUSHALOT_AUTHORIZATIONTOKEN = pushalot_authorizationtoken
+
+        sickbeard.USE_PUSHSOMETHING = config.checkbox_to_value(use_pushsomething)
+        sickbeard.PUSHSOMETHING_NOTIFY_ONSNATCH = config.checkbox_to_value(pushsomething_notify_onsnatch)
+        sickbeard.PUSHSOMETHING_NOTIFY_ONDOWNLOAD = config.checkbox_to_value(pushsomething_notify_ondownload)
+        sickbeard.PUSHSOMETHING_SERVICE_TOKEN = pushsomething_service_token
 
         # Online
         sickbeard.USE_TWITTER = config.checkbox_to_value(use_twitter)
