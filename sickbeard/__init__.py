@@ -652,6 +652,12 @@ def initialize(consoleLogging=True):
         PUSHALOT_NOTIFY_ONDOWNLOAD = bool(check_setting_int(CFG, 'Pushalot', 'pushalot_notify_ondownload', 0))
         PUSHALOT_AUTHORIZATIONTOKEN = check_setting_str(CFG, 'Pushalot', 'pushalot_authorizationtoken', '')
 
+        CheckSection(CFG, 'PushSomething')
+        USE_PUSHSOMETHING = bool(check_setting_int(CFG, 'PushSomething', 'use_pushsomething', 0))
+        PUSHSOMETHING_NOTIFY_ONSNATCH = bool(check_setting_int(CFG, 'PushSomething', 'pushsomething_notify_onsnatch', 0))
+        PUSHSOMETHING_NOTIFY_ONDOWNLOAD = bool(check_setting_int(CFG, 'PushSomething', 'pushsomething_notify_ondownload', 0))
+        PUSHSOMETHING_SERVICE_TOKEN = check_setting_str(CFG, 'PushSomething', 'pushsomething_service_token', '')
+
         if not os.path.isfile(CONFIG_FILE):
             logger.log(u"Unable to find '" + CONFIG_FILE + "', all settings will be default!", logger.DEBUG)
             save_config()
@@ -1187,6 +1193,12 @@ def save_config():
     new_config['Pushalot']['pushalot_notify_onsnatch'] = int(PUSHALOT_NOTIFY_ONSNATCH)
     new_config['Pushalot']['pushalot_notify_ondownload'] = int(PUSHALOT_NOTIFY_ONDOWNLOAD)
     new_config['Pushalot']['pushalot_authorizationtoken'] = PUSHALOT_AUTHORIZATIONTOKEN
+
+    new_config['PushSomething'] = {}
+    new_config['PushSomething']['use_pushsomething'] = int(USE_PUSHSOMETHING)
+    new_config['PushSomething']['pushsomething_notify_onsnatch'] = int(PUSHSOMETHING_NOTIFY_ONSNATCH)
+    new_config['PushSomething']['pushsomething_notify_ondownload'] = int(PUSHSOMETHING_NOTIFY_ONDOWNLOAD)
+    new_config['PushSomething']['pushsomething_service_token'] = PUSHSOMETHING_SERVICE_TOKEN
 
     new_config['Newznab'] = {}
     new_config['Newznab']['newznab_data'] = NEWZNAB_DATA
